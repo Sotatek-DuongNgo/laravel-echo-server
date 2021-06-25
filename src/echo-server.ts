@@ -45,7 +45,7 @@ export class EchoServer {
             allowMethods: '',
             allowHeaders: ''
         },
-        hookEndpoint: '/api/echo-hook'
+        hookEndpoint: ['/api/echo-hook']
     };
 
     /**
@@ -121,7 +121,7 @@ export class EchoServer {
      * Text shown at startup.
      */
     startup(): void {
-        Log.title(`\nL A R A V E L  E C H O  S E R V E R\n`);
+        Log.title(`\nL A R A V E L  E C H O  S E R V E R  H O O K S\n`);
         Log.info(`version ${packageFile.version}\n`);
 
         if (this.options.devMode) {

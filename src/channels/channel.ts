@@ -213,6 +213,25 @@ export class Channel {
 
         let options = this.prepareHookHeaders(socket, auth, channel, event, payload);
 
+        // for single hook
+        if (typeof this.options.hookEndpoint === 'string') {
+            this.sendRequest(socket, event, options, this.options.hookEndpoint)
+            return
+        }
+
+        // for multiple hooks
+        this.options.hookEndpoint.forEach(endpoint => {
+            if (typeof endpoint !== 'string') {
+                return
+            }
+
+            this.sendRequest(socket, event, options, endpoint)
+        })
+    }
+
+    sendRequest(socket: any, event: string, options: any, endpoint: string) {
+        options.url = this.buildRequestUrl(endpoint)
+
         this.request.post(options, (error, response, body, next) => {
             if (error) {
                 if (this.options.devMode) {
@@ -232,6 +251,26 @@ export class Channel {
         });
     }
 
+    buildRequestUrl(endpoint: string) {
+        if (!this.isValidUrl(endpoint)) {
+            endpoint = this.options.authHost + endpoint
+        }
+
+        return endpoint
+    }
+
+    isValidUrl(endpoint: string) {
+      let url
+
+      try {
+        url = new URL(endpoint)
+      } catch (error) {
+        return false
+      }
+
+      return url.protocol === 'http:' || url.protocol === 'https:'
+    }
+
     /**
      * Prepare headers for request to app server.
      *
@@ -244,7 +283,7 @@ export class Channel {
      */
     prepareHookHeaders(socket: any, auth: any, channel: string, event: string, payload: any): any {
         let options = {
-            url: this.options.authHost + this.options.hookEndpoint,
+            url: '',
             form: {
                 event: event,
                 channel: channel,
