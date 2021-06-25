@@ -2,8 +2,8 @@ import { PresenceChannel } from './presence-channel';
 import { PrivateChannel } from './private-channel';
 import { Log } from './../log';
 
-let request = require('request');
-var fs = require('fs');
+const request = require('request');
+const fs = require('fs');
 
 export class Channel {
     /**
