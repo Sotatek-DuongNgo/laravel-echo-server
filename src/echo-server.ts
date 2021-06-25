@@ -45,7 +45,7 @@ export class EchoServer {
             allowMethods: '',
             allowHeaders: ''
         },
-        hookEndpoint: null
+        hookEndpoint: '/api/echo-hook'
     };
 
     /**
