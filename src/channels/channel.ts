@@ -210,7 +210,7 @@ export class Channel {
             return;
         }
 
-        let options = this.prepareHookHeaders(socket, auth, channel, event, payload);
+        const options = this.prepareHookHeaders(socket, auth, channel, event, payload);
 
         // for single hook
         if (typeof this.options.hookEndpoint === 'string') {
@@ -281,7 +281,7 @@ export class Channel {
      * @returns {any}
      */
     prepareHookHeaders(socket: any, auth: any, channel: string, event: string, payload: any): any {
-        let options = {
+        const options = {
             url: '',
             form: {
                 event: event,
@@ -291,13 +291,13 @@ export class Channel {
             headers: (auth && auth.headers) ? auth.headers : {}
         };
 
-        if (this.options.authHost.indexOf('https')>-1 && this.options.sslCertPath && this.options.sslKeyPath) {
-            options['agentOptions']= {
+        if (this.options.authHost.indexOf('https') > -1 && this.options.sslCertPath && this.options.sslKeyPath) {
+            options['agentOptions'] = {
                 cert: fs.readFileSync(this.options.sslCertPath),
                 key: fs.readFileSync(this.options.sslKeyPath),
                 passphrase: this.options.sslPassphrase
             };
-            options['strictSSL']=false;
+            options['strictSSL'] = false;
         }
 
         options.headers['Cookie'] = socket.request.headers.cookie;
