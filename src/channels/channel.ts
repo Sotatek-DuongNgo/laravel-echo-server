@@ -84,9 +84,7 @@ export class Channel {
     /**
      * Leave a channel.
      */
-    async leave(socket: any, data: any , reason: string): Promise<void> {
-        const channel: string = data?.channel
-
+    async leave(socket: any, channel: any , reason: string): Promise<void> {
         if (channel) {
             let user: any
 
@@ -104,12 +102,12 @@ export class Channel {
                 Log.info(`[${new Date().toISOString()}] - ${socket.id} left channel: ${channel} (${reason})`);
             }
 
-
             let payload: object = {
                 user_id: user?.user_id,
-                socket_id: socket.id
+                socket_id: socket.id,
+                sid: user?.user_info?.sid
             }
-            this.hook(socket, channel, data.auth, 'leave', payload)
+            this.hook(socket, channel, {}, 'leave', payload)
         }
     }
 
@@ -171,7 +169,8 @@ export class Channel {
 
         let payload: object = {
             user_id: user?.user_id,
-            socket_id: socket.id
+            socket_id: socket.id,
+            sid: user?.user_info?.sid
         }
         this.hook(socket, data.channel, data.auth, 'join', payload)
     }
