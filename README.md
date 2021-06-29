@@ -1,6 +1,6 @@
 # Laravel Echo Server
 
-NodeJs server for Laravel Echo broadcasting with Socket.io and API Hooks
+NodeJs server for Laravel Echo broadcasting with Socket.io and API hooks.
 
 ## System Requirements
 

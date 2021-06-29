@@ -1,17 +1,17 @@
 {
   "name": "laravel-echo-server-hooks",
-  "version": "1.6.2",
-  "description": "Laravel Echo Node JS Server for Socket.io",
+  "version": "1.0.0",
+  "description": "Laravel Echo Node JS Server for Socket.io with API hooks",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/tlaverdure/Laravel-Echo-Server.git"
+    "type": "N/A",
+    "url": "N/A"
   },
   "main": "dist/index.js",
   "keywords": [
     "laravel",
     "socket.io"
   ],
-  "author": "Thiery Laverdure",
+  "author": "Aster",
   "license": "MIT",
   "jshintConfig": {
     "esversion": 6
@@ -41,6 +41,6 @@
     "sqlite3": "^3.1.13"
   },
   "bin": {
-    "laravel-echo-server": "bin/server.js"
+    "laravel-echo-server-hooks": "bin/server.js"
   }
 }
