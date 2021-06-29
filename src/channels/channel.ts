@@ -102,7 +102,7 @@ export class Channel {
                 Log.info(`[${new Date().toISOString()}] - ${socket.id} left channel: ${channel} (${reason})`);
             }
 
-            let payload: object = {
+            const payload: object = {
                 user_id: user?.user_id,
                 socket_id: socket.id,
                 sid: user?.user_info?.sid
@@ -167,7 +167,7 @@ export class Channel {
             Log.info(`[${new Date().toISOString()}] - ${socket.id} joined channel: ${data.channel}`);
         }
 
-        let payload: object = {
+        const payload: object = {
             user_id: user?.user_id,
             socket_id: socket.id,
             sid: user?.user_info?.sid
