@@ -1,6 +1,6 @@
 {
   "name": "laravel-echo-server-hooks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Laravel Echo Node JS Server for Socket.io with API hooks",
   "repository": {
     "type": "N/A",
