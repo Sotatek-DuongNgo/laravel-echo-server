@@ -93,6 +93,7 @@ Edit the default configuration of the server by adding options to your **laravel
 | `sslPassphrase`    | `''`                 | The pass phrase to use for the certificate (if applicable) |
 | `socketio`         | `{}`                 | Options to pass to the socket.io instance ([available options](https://github.com/socketio/engine.io#methods-1)) |
 | `subscribers`      | `{"http": true, "redis": true}` | Allows to disable subscribers individually. Available subscribers: `http` and `redis` |
+| `hookEndpoint`   | `['/api/echo-hook'] or '/api/echo-hook'` | it can be a `Array` or `String`. Default api hook: `'/api/echo-hook'` |
 
 ### DotEnv
 If a .env file is found in the same directory as the laravel-echo-server.json
