@@ -1,4 +1,4 @@
-# Laravel Echo Server
+# Laravel Echo Server With API Hooks
 
 NodeJs server for Laravel Echo broadcasting with Socket.io and API hooks.
 
