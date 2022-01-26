@@ -209,6 +209,7 @@ export class EchoServer {
             this.onUnsubscribe(socket);
             this.onDisconnecting(socket);
             this.onClientEvent(socket);
+            this.onUserLogout(socket);
         });
     }
 
@@ -240,6 +241,15 @@ export class EchoServer {
                     this.channel.leave(socket, room, reason);
                 }
             });
+        });
+    }
+
+    /**
+     * On client event user-logout
+     */
+    onUserLogout(socket: any): void {
+        socket.on('user-logout', data => {
+            this.channel.leave(socket, data.channel, 'user logout');
         });
     }
 

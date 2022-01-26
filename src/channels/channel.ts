@@ -107,6 +107,13 @@ export class Channel {
                 socket_id: socket.id,
                 sid: user?.user_info?.sid
             }
+
+            const reasons: string[] = ['transport close', 'ping timeout', 'user logout']
+            if (reasons.includes(reason)) {
+                console.log('==========call hook when leave room==========', reason)
+                this.hook(socket, channel, {}, 'leave', payload);
+            }
+
             this.hook(socket, channel, {}, 'leave', payload)
         }
     }
